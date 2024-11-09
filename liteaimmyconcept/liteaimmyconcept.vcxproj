@@ -98,7 +98,14 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">
-    <IncludePath>C:\Users\taylo\source\repos\ncnn\build\include;$(IncludePath)</IncludePath>
+    <IncludePath>C:\Users\taylo\source\repos\ncnn\x64\include;C:\Users\taylo\source\repos\ncnn\arm\include;C:\Users\taylo\source\repos\ncnn\arm64\include;C:\Users\taylo\source\repos\ncnn\arm64\include</IncludePath>
+    <SourcePath>C:\Users\taylo\source\repos\ncnn;$(SourcePath)</SourcePath>
+    <LibraryPath>C:\Users\taylo\source\repos\ncnn\x64\lib;C:\Users\taylo\source\repos\ncnn\arm\lib;C:\Users\taylo\source\repos\ncnn\arm64\lib</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">
+    <IncludePath>C:\Users\taylo\source\repos\vcpkg\installed\arm64-windows\include;C:\Users\taylo\source\repos\ncnn\arm\include;C:\Users\taylo\source\repos\ncnn\arm64\include;$(VC_IncludePath);$(WindowsSDK_IncludePath);$(IncludePath)</IncludePath>
+    <SourcePath>C:\Users\taylo\source\repos\ncnn;$(VC_SourcePath);</SourcePath>
+    <LibraryPath>C:\Users\taylo\source\repos\vcpkg\installed\arm64-windows\lib;C:\Users\taylo\source\repos\ncnn\arm64\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -160,14 +167,16 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;_ITERATOR_DEBUG_LEVEL=2;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\taylo\source\repos\ncnn\build\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <AdditionalUsingDirectories>C:\Users\taylo\source\repos\ncnn\build;%(AdditionalUsingDirectories)</AdditionalUsingDirectories>
+      <AdditionalIncludeDirectories>C:\Users\taylo\source\repos\ncnn\arm64\include</AdditionalIncludeDirectories>
+      <AdditionalUsingDirectories>%(AdditionalUsingDirectories)</AdditionalUsingDirectories>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>C:\Users\taylo\source\repos\ncnn\arm64\lib\ncnn.lib;ncnn.lib;C:\Users\taylo\source\repos\ncnn\arm64\lib\ncnn.lib;ncnn.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">
@@ -178,12 +187,14 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>C:\Users\taylo\source\repos\ncnn\arm64\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>glslang.lib;ncnn.lib;$(CoreLibraryDependencies);%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
