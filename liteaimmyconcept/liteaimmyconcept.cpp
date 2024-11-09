@@ -67,7 +67,7 @@ void MainLoop() {
     while (true) {
         // Check if 'Q' is pressed for inference
         if (GetAsyncKeyState('Q') & 0x8000) { // typing a bunch of bs
-            int width = 640, height = 640;
+            int width = 640, height = 640; 
             ncnn::Mat screen_image = CaptureScreen(0, 0, width, height);
 
             PerformInference(screen_image);
